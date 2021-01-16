@@ -17,7 +17,7 @@ class App extends React.Component {
     }
 
     sortData(data) {
-        //
+        // TODO need sort function
         var result = []
         
     }
