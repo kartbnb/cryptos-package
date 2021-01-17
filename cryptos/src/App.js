@@ -8,18 +8,45 @@ class App extends React.Component {
     
     async componentDidMount() {
         const response = await axios.get('http://127.0.0.1:5000')
-        console.log(response.data.result)
+        
+        const result = this.sortData(response.data.result, 'market')
+        console.log(result)
 
-        const result = response.data.result
-
-
-        this.setState({ coins: response.data.result })
+        this.setState({ coins: result, currentKey: 'market' })
     }
 
-    sortData(data) {
+    reSortData = (data, key) => {
+        console.log('key', key)
+        const newResult = this.sortData(data, key)
+        console.log(key, newResult)
+        this.setState({ coins: newResult, currentKey: key })
+    }
+
+    sortData(data, key) {
         // TODO need sort function
-        var result = []
+        console.log(key, data)
         
+        if (data.length === 0) {
+            return []
+        }
+        if (data.length === 1) {
+            return data
+        }
+        var leftChild = [];
+        var rightChild = [];
+        var i;
+        for (i = 1; i < data.length; i++) {
+            if (data[i][key] > data[0][key]) {
+                leftChild.push(data[i])
+            } else {
+                rightChild.push(data[i])
+            }
+        }
+        var left = this.sortData(leftChild, key)
+        var right = this.sortData(rightChild, key)
+        left.push(data[0])
+        var result = [].concat(left, right)
+        return result
     }
 
     render() {
@@ -30,7 +57,7 @@ class App extends React.Component {
         }
         return(
             <div>
-                <Table coins={this.state.coins} />
+                <Table coins={this.state.coins} sortData={this.reSortData} currentKey={this.state.currentKey}/>
             </div>
         )
         

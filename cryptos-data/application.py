@@ -22,12 +22,12 @@ def getData():
         row_for_coin = {}
         row_for_coin = {
             'name': coin, 
-            'price': latest['Open'], 
+            'price': float(latest['Open'].replace(',', '')), 
             'one_day': one_day_change, 
             'seven_day': seven_day_change, 
             'one_month': one_month_change,
-            'volume': latest['Volume'],
-            'market': latest['Market Cap']}
+            'volume': int(latest['Volume'].replace(',', '')),
+            'market': int(latest['Market Cap'].replace(',', ''))}
         result.append(row_for_coin)
     return_dict = return_default.copy()
     return_dict['result'] = result
