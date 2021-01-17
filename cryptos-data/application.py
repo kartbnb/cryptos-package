@@ -3,6 +3,8 @@ from flask_cors import CORS
 from csvreader import CsvReader
 import json
 
+# This file is for reading csv file and send json api for the application
+
 app=Flask(__name__)
 CORS(app)
 
@@ -15,11 +17,16 @@ file_reader = CsvReader()
 def getData():
     result = []
     for coin in coins:
+        # get latest record for the coin
         latest = file_reader.getLatest(coin)
+        # get 1 day price change percentage for the coin
         one_day_change = file_reader.getDayChange(coin, 1)
+        # get 7 day price change percentage for the coin
         seven_day_change = file_reader.getDayChange(coin, 7)
+        # get 30 day price change percentage for the coin
         one_month_change = file_reader.getDayChange(coin, 30)
         row_for_coin = {}
+        # create json for each coin
         row_for_coin = {
             'name': coin, 
             'price': float(latest['Open'].replace(',', '')), 

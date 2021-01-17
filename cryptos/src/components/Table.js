@@ -2,14 +2,17 @@ import React from 'react';
 import Row from './Row';
 
 const Table = ({coins, sortData, currentKey}) => {
+    // map all data to each row
     const coinsData = coins.map((coin, index) => {
         return <Row index={index} coin={coin} key={coin.name}/>
     })
 
+    // this resort function is using function inherited from App.js
     const reSort = (key) => {
         sortData(coins, key)
     }
 
+    // get button class name to show different button style for head row
     const getButtonClass = (key) => {
         if (key === currentKey) {
             return "ui toggle button active"
@@ -18,6 +21,7 @@ const Table = ({coins, sortData, currentKey}) => {
         }
     }
 
+    // get icon class name to show different icon style for head row
     const getIconClass = (key) => {
         if (key === currentKey) {
             return "sort down icon"

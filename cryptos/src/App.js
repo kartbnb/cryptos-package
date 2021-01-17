@@ -7,25 +7,23 @@ class App extends React.Component {
     state = { coins: [] };
     
     async componentDidMount() {
+        // get api requests
         const response = await axios.get('http://127.0.0.1:5000')
-        
+        // sort data by key market
         const result = this.sortData(response.data.result, 'market')
-        console.log(result)
-
+        // set key and sorted data to state
         this.setState({ coins: result, currentKey: 'market' })
     }
 
+    // this function is resorting data by specific key
     reSortData = (data, key) => {
-        console.log('key', key)
         const newResult = this.sortData(data, key)
-        console.log(key, newResult)
         this.setState({ coins: newResult, currentKey: key })
     }
 
+    // this function is sorting data by specific key
     sortData(data, key) {
-        // TODO need sort function
-        console.log(key, data)
-        
+        // Use quick sort
         if (data.length === 0) {
             return []
         }
@@ -51,6 +49,7 @@ class App extends React.Component {
 
     render() {
         if (this.state.coins.length === 0) {
+            // if no data show Loading
             return (
                 <h1>Loading...</h1>
             )

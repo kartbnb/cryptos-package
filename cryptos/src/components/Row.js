@@ -2,7 +2,7 @@ import React from 'react';
 
 const Row = ({ coin, index }) => {
 
-    //console.log('data', coin)
+    // if percentage positive or zero show green otherwise show red
     const getBackground = (value) => {
         if(value >= 0) {
             return "positive"
@@ -11,6 +11,7 @@ const Row = ({ coin, index }) => {
         }
     }
 
+    // if percentage positive show up angle, zero no angle shown and negative show down angle
     const getAngle = (value) => {
         if(value > 0) {
             return "angle up icon"
