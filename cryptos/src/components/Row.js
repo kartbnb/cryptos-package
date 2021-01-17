@@ -5,24 +5,24 @@ const Row = ({ coin, index }) => {
     // if percentage positive or zero show green otherwise show red
     const getBackground = (value) => {
         if(value >= 0) {
-            return "positive"
+            return "positive";
         } else {
-            return "negative"
-        }
-    }
+            return "negative";
+        };
+    };
 
     // if percentage positive show up angle, zero no angle shown and negative show down angle
     const getAngle = (value) => {
         if(value > 0) {
-            return "angle up icon"
-        }
+            return "angle up icon";
+        };
         if(value < 0) {
-            return "angle down icon"
-        }
+            return "angle down icon";
+        };
         if(value === 0) {
-            return ""
-        }
-    }
+            return "";
+        };
+    };
 
     return (
         <tr>
@@ -35,7 +35,7 @@ const Row = ({ coin, index }) => {
             <td>${coin.volume.toLocaleString()}</td>
             <td>${coin.market.toLocaleString()}</td>
         </tr>
-    )
-}
+    );
+};
 
 export default Row;
