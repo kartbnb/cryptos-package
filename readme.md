@@ -12,25 +12,25 @@ Frontend part is cryptos
 # Follow steps below to use the project
 ## 1.Backend
 
-The backend of this project needs following packages: \n
-        1. Flask\n
-        2. flask_cors\n
+### The backend of this project needs following packages: 
+###        1. Flask
+###        2. flask_cors
 
-1. activate venv environment, type following commands in terminal: \n
-        cd cryptos-data\n
-        . venv/bin/activate\n
+### 1. activate venv environment, type following commands in terminal: 
+###        cd cryptos-data
+###        . venv/bin/activate
 
-2. export flask app environment variable\n 
-        export FLASK_APP=application.py\n
+### 2. export flask app environment variable
+###        export FLASK_APP=application.py
 
-3. run flask application\n
-        flask run\n
+### 3. run flask application
+###        flask run
 
 ## 2.Frontend
-The frontend of this project needs following packages:\n
-        1. React\n
-        2. axios\n
+### The frontend of this project needs following packages:
+###        1. React
+###        2. axios
 
-1. go to the folder and start the project:\n
-        cd cryptos\n
-        npm start\n
+### 1. go to the folder and start the project:
+###        cd cryptos
+###        npm start
